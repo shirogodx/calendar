@@ -1,0 +1,206 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Roboto:wght@400;700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 20px;
+}
+
+h1 {
+    font-size: 2rem;
+    line-height: 2rem;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--text-color);
+}
+
+h2 {
+    font-size: 2rem;
+    line-height: 2rem;
+    font-family: 'Roboto', sans-serif;
+
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1rem;
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-color);
+}
+
+main,
+.color-label {
+
+    --background: #353535;
+    --secondary-color: #272727;
+    --accent-color: #EFA638;
+    --text-color: #FFFFFF;
+    --calendar-tiles-color: #646464;
+    transition: 0.1s;
+
+}
+
+.color-toggle:checked~main {
+    --background: #EBEBEB;
+    --secondary-color: #FFFFFF;
+    --accent-color: #1395DE;
+    --text-color: #000;
+    --calendar-tiles-color: #D4D4D4;
+}
+
+.color-toggle:checked~.color-label {
+    --background: #EBEBEB;
+    --secondary-color: #FFFFFF;
+    --accent-color: #1395DE;
+    --text-color: #000;
+    --calendar-tiles-color: #D4D4D4;
+}
+
+
+
+main {
+    height: 100vh;
+    background: var(--background);
+}
+
+.header {
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--secondary-color);
+    color: var(--text-color);
+}
+
+.calendar {
+    height: calc(100vh-80px);
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.header__title {
+    margin-left: 20px;
+}
+
+.color-label {
+    position: fixed;
+    right: 35px;
+    bottom: 35px;
+    width: 323px;
+    padding: 22px 45px;
+    border-radius: 50px;
+    background: var(--secondary-color);
+    text-align: right;
+
+}
+
+.color-toggle {
+    position: fixed;
+    bottom: 51px;
+    right: 300px;
+    height: 37px;
+    z-index: 2;
+}
+
+
+.calendar__body {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(5, 140px);
+    width: 1100px;
+    height: 750px;
+    background: var(--secondary-color);
+    padding: 25px;
+}
+
+.cell {
+    background: var(--calendar-tiles-color);
+    border-radius: 10px;
+    border: 1px solid var(--secondary-color);
+    padding: 13px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+
+    transform-style: preserve-3d;
+    perspective: 1000px;
+}
+
+.cell__day-num {
+    color: var(--accent-color);
+}
+
+.cell_month {
+    display: flex;
+    justify-content: space-between;
+    color: var(--text-color);
+}
+
+.cell_monday::after {
+    content: 'Пн';
+}
+
+.cell_tuesday::after {
+    content: 'Вт';
+}
+
+.cell_wednesday::after {
+    content: 'СР';
+}
+
+.cell_thursday::after {
+    content: 'ЧТ';
+}
+
+.cell_friday::after {
+    content: 'Пт';
+}
+
+.cell_saturday::after {
+    content: 'Сб';
+}
+
+.cell_sunday::after {
+    content: 'Вс';
+}
+
+.cell_monday::after,
+.cell_tuesday::after,
+.cell_wednesday::after,
+.cell_thursday::after,
+.cell_friday::after,
+.cell_saturday::after,
+.cell_sunday::after {
+    position: absolute;
+    top:0;
+    left: 0;
+    background: var(--accent-color);
+    width: 100%;
+    height: 100%;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--text-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    transform: rotateX(180deg);
+    backface-visibility: hidden;
+    transition: 0.3s;
+
+}
+.cell_monday:hover::after,
+.cell_tuesday:hover::after,
+.cell_wednesday:hover::after,
+.cell_thursday:hover::after,
+.cell_friday:hover::after,
+.cell_saturday:hover::after,
+.cell_sunday:hover::after {
+ transform: rotatex(0);
+}
